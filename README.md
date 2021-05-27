@@ -31,15 +31,15 @@ You can download the image and reproduce our experiments about TVMfuzz in the fo
 
 1)	Input the following commands:
 
-**docker pull mhypony/dlcstudy_tvmfuzz:latest**
+        **docker pull mhypony/dlcstudy_tvmfuzz:latest**
 
-**docker run -it mhypony/dlcstudy_tvmfuzz:latest /bin/bash** 
+        **docker run -it mhypony/dlcstudy_tvmfuzz:latest /bin/bash** 
 
 2)	Now you are in our docker container, to eliminate unexpected situations that may corrupt our experiment, you should input the following two commands:
 
-  **source /etc/profile**
+        **source /etc/profile**
 
-  **source activate**
+        **source activate**
   
 3)	Now go to the folder called **DLCstudy** and run **run.py**.
 
