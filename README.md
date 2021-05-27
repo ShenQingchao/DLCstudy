@@ -32,13 +32,20 @@ You can download the image and reproduce our experiments about TVMfuzz in the fo
 1)	Input the following commands:
 
 **docker pull mhypony/dlcstudy_tvmfuzz:latest**
+
 **docker run -it mhypony/dlcstudy_tvmfuzz:latest /bin/bash** 
+
 2)	Now you are in our docker container, to eliminate unexpected situations that may corrupt our experiment, you should input the following two commands:
-**source /etc/profile \n
-source activate**
+
+  **source /etc/profile**
+
+  **source activate**
+  
 3)	Now go to the folder called **DLCstudy** and run **run.py**.
-4)	Finally, you can check the generated program (**program.py**) in the folder named **byproduct**. 
-5)	You can also download the latest version of TVM and compare the difference between executions under TVM 0.7 and TVM latest. If you are lucky, you may find some bugs that we have never found.
+
+5)	Finally, you can check the generated program (**program.py**) in the folder named **byproduct**. 
+
+6)	You can also download the latest version of TVM and compare the difference between executions under TVM 0.7 and TVM latest. If you are lucky, you may find some bugs that we have never found.
 
 
 
