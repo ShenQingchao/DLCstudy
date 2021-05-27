@@ -61,7 +61,7 @@ For each worksheet, the following related information are shown:
 - the url directed to this pr
 - the concrete date when this pr was published
 - the number of comments involved
-- the number of files involved and their seperate names
+- the number of files involved and their separate names
 - the symptom of this bug
 - the stage about this bug
 - the top root cause of this bug
