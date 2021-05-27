@@ -4,7 +4,7 @@ from TVMfuzz.syntax import *
 from TVMfuzz.utils import varNameGenerator
 from TVMfuzz.elements import *
 import astunparse
-import tvm
+# import tvm
 
 random.seed()
 
