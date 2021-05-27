@@ -31,7 +31,7 @@ By the way, Python version 3.9.1 is required for successful execution.
 
 This dataset is the basic support for the paper: **A Comprehensive Study of Deep Learning Compiler Bugs**. 
 
-We collected the closed and tje merged pull requests that are responsible for fixing bugs from their GitHub repositories over 15 months. In total, we collected 1,361 bug-fixing pull requests and identified 603 bugs, including 318 TVM bugs, 145 Glow bugs, and 140 nGraph bugs.
+We collected the closed and the merged pull requests that are responsible for fixing bugs from their GitHub repositories over 15 months. In total, we collected 1,361 bug-fixing pull requests and identified 603 bugs, including 318 TVM bugs, 145 Glow bugs, and 140 nGraph bugs.
 
 All the bugs are recorded in the excel table and the bugs of each compiler are displayed in a single worksheet.
 
