@@ -28,14 +28,18 @@ By the way, Python version 3.9.1 is required for successful execution.
 
 To release reviews from laborious tasks of building experimental environments, we have created a docker image and pushed it to docker hub. The version of TVM installed in our image is 0.7, consistent with the one in our experiments.
 You can download the image and reproduce our experiments about TVMfuzz in the following steps:
+
 1)	Input the following commands:
-docker pull mhypony/dlcstudy_tvmfuzz:latest
-docker run -it mhypony/dlcstudy_tvmfuzz:latest /bin/bash
+
+**docker pull mhypony/dlcstudy_tvmfuzz:latest **
+** docker run -it mhypony/dlcstudy_tvmfuzz:latest /bin/bash ** 
 2)	Now you are in our docker container, to eliminate unexpected situations that may corrupt our experiment, you should input the following two commands:
+**
 source /etc/profile
 source activate
-3)	Now go to the folder called DLCstudy and run run.py.
-4)	Finally, you can check the generated program (program.py) in the folder named byproduct. 
+**
+3)	Now go to the folder called **DLCstudy** and run **run.py**.
+4)	Finally, you can check the generated program (**program.py**) in the folder named **byproduct**. 
 5)	You can also download the latest version of TVM and compare the difference between executions under TVM 0.7 and TVM latest. If you are lucky, you may find some bugs that we have never found.
 
 
