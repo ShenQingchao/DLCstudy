@@ -1,0 +1,8 @@
+hardware environment requirement:
+* 8G Memory
+* 16G storage
+
+
+software environments requirement:  
+* Docker
+* Linux
