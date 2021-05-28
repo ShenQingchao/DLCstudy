@@ -1,8 +1,8 @@
-hardware environment requirement:
+the hardware environment requirement:
 * 8G Memory
-* 16G storage
+* 4G storage
 
 
-software environments requirement:  
+the software environments requirement:  
 * Docker
-* Linux
+* R language
