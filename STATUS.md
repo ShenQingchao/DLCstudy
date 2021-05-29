@@ -1,7 +1,6 @@
-Apply for the badges:  
-	Artifacts Evaluated & Artifacts Available
+**Apply for the badges:**  Artifacts Evaluated & Artifacts Available
 
-The reasons why we believe that the artifact deserves the "Artifact Available" and "Artifact Evaluated" badges:
+**The reasons why we believe that the artifact deserves the "Artifact Available" and "Artifact Evaluated" badges:**
 
 Our artifact contains all relevant files and codes and is publicly available. It can easily be replicated. Therefore, we apply for the badges "Artifact Available" and "Artifact Evaluated".
 
