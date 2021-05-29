@@ -1,5 +1,5 @@
 the hardware environment requirement:
-* 8G Memory
+* 4G Memory
 * 4G storage
 
 
