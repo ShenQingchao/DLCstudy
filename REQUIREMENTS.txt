@@ -10,4 +10,6 @@ the software environments requirement:
   + 
 
 Detail Information:
-To run the aritifact, a machine with at least 4G RAM and 4G storage is needed. Meanwhile, docker and R language are needed to be installed in the machine. Specifically, docker is used to run TVMFuzz. R language is required to run the drawing script.
+To run the aritifact, a machine with at least 4G RAM and 4G storage is needed. 
+Meanwhile, docker and R language are needed to be installed in the machine. 
+Specifically, docker is used to run TVMFuzz. R language is required to run the drawing script.
