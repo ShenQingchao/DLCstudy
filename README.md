@@ -1,4 +1,4 @@
-# TVMfuzz  ![image](https://user-images.githubusercontent.com/29506758/120074834-56175680-c0d1-11eb-956a-9af32c0cabc5.png)
+# TVMfuzz  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4841808.svg)](https://doi.org/10.5281/zenodo.4841808)
 
 ## introduction
 
