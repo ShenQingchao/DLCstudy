@@ -1,4 +1,4 @@
-# TVMfuzz  [![DOI](https://sandbox.zenodo.org/badge/369744575.svg)](https://sandbox.zenodo.org/badge/latestdoi/369744575)
+# TVMfuzz  ![image](https://user-images.githubusercontent.com/29506758/120074834-56175680-c0d1-11eb-956a-9af32c0cabc5.png)
 
 ## introduction
 
