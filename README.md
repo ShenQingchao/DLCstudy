@@ -26,6 +26,8 @@ By the way, Python version 3.9.1 is required for successful execution.
 
 ## Reproducibility
 
+### TVMFuzz
+
 To release reviews from laborious tasks of building experimental environments, we have created a docker image and pushed it to docker hub. The version of TVM installed in our image is 0.7, consistent with the one in our experiments.
 You can download the image and reproduce our experiments about TVMfuzz in the following steps:
 
@@ -47,8 +49,13 @@ You can download the image and reproduce our experiments about TVMfuzz in the fo
 
 6)	You can also download the latest version of TVM and compare the difference between executions under TVM 0.7 and TVM latest. If you are lucky, you may find some bugs that we have never found.
 
+### Plotting
+In order to better reproduce the figures in the paper, we provide a drawing scrip (**drawing_script.R**), which can generate all the graphs in our paper. To see the generated graph intuitively, we recommend that you use TStudio to run this script. 
+First You just need to download the **plotting** folder in this repository to your computer.
 
+Secondly, you need to run the script(`drawing_script.R`) with RStudio, and then all the figures in our paper will be generated one by one.
 
+Note that: The dataset file(**dataset.xlsx**) should be placed in the same directory as the drawing_script.R file.
 
 # Dataset
 
