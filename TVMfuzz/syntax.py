@@ -1,32 +1,12 @@
-'''
-Copyright 2021 The Authors: Qingchao Shen, Haoyang Ma, Junjie Chen, Yongqiang Tian, Shing-Chi Cheung, Xiang Che
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-'''
-
-
 from TVMfuzz.colors import *
 import ast
 
 def mainstring(self, string, surround, restname, prefix):
-    # string += prefix + '---optional?---\n'
-    # string += prefix + str(optional) + '\n'
     string += prefix + '---restname---\n'
     string += prefix + str(restname) + '\n'
     string += prefix + '---surround---\n'
     if surround:
         string += surround.__str__(prefix + ' ') + '\n'
-        # string += prefix + 'YES\n' 
     string += prefix + '---Parents---\n'
     if self.parents:
         string += prefix
@@ -36,7 +16,6 @@ def mainstring(self, string, surround, restname, prefix):
         elif isinstance(p, pWith):
             string += 'with '
         else:
-            # string += str(p.varobjects[0]) + '\n'
             if p.varobjects[0].Type == 'variable':
                 string += p.varobjects[0].name + \
                     p.varobjects[0].restname + ' '
@@ -63,12 +42,6 @@ def mainstring(self, string, surround, restname, prefix):
     string += prefix + '---varobjects---\n'
     if self.varobjects:
         string += self.varobjects[0].__str__(prefix + ' ')
-        # for vo in self.varobjects:
-        #     if vo.Type == 'variable':
-        #         string += vo.name  + \
-        #             vo.restname + ' '
-        #     elif vo.Type == 'subscript':
-        #         string += vo.fullstr + ' '
         string += '\n'
     return string
 
@@ -149,12 +122,6 @@ class Param:
             raise Exception(Cyan('Type error! Expect list but receive ' + str(type(varobjects))))
         
         self.varobjects = varobjects
-
-        # self.varobjectsList.append(self.varobjects)
-
-    # def update_varobjectsList(self):
-        
-    #     self.varobjectsList.append(self.varobjects)
 
 class pConst(Param):
     
@@ -541,13 +508,9 @@ class pBinop(Param):
         self.Type = 'binop'
     
     def add_left(self, ele):
-        # if not isinstance(ele, Param):
-        #     raise Exception(Cyan('Type error! Expect Param but receive ' + str(type(ele))))
         self.left.append(ele)
     
     def add_right(self, ele):
-        # if not isinstance(ele, Param):
-        #     raise Exception(Cyan('Type error! Expect Param but receive ' + str(type(ele))))
         self.right.append(ele)
 
     def __str__(self, prefix=''):
@@ -627,7 +590,6 @@ class pFunc(Param):
         self.restricted = restricted
         self.suffix = suffix
         self.indent = indent
-        # self.closureTofunc = set()
         self.adjuncts = set()
         self.surround = surround
 
@@ -667,21 +629,6 @@ class pFunc(Param):
         if not isinstance(param, Param) and param != None:
             raise Exception(Cyan('Type error! Expect Param but receive ' + str(type(param))))
         self.restricted = param
-    
-    # def update_closureTofunc(self, ele):
-    #     if not isinstance(ele, tuple):
-    #         raise Exception(Cyan('Type error! Expect tuple but receive ' + str(type(ele))))
-    #     self.closureTofunc.add(ele)
-    
-    # def assign_closureTofunc(self, ele):
-    #     if not isinstance(ele, set):
-    #         raise Exception(Cyan('Type error! Expect set but receive ' + str(type(ele))))
-        
-    #     for elee in ele:
-    #         if not isinstance(elee, tuple):
-    #             raise Exception(Cyan('Type error! Expect tuple but receive ' + str(type(elee))))
-        
-    #     self.closureTofunc = ele
 
     def __str__(self, prefix=''):
         string = prefix + '===pFunc===\n'
@@ -739,8 +686,6 @@ class pWith(Param):
         for kc in self.withitems:
             string += kc[0].__str__(prefix + '  ') + '\n'
         string += '---body---\n'
-        # for ele in self.body:
-        #     string += ele.__str__(prefix + '  ') + '\n'
         string = mainstring(self,
                             string, 
                             self.surround, 
@@ -766,12 +711,6 @@ class pLambda(Param):
         self.Type = 'lambda'
         self.args = []
         self.body = []
-    #     self.value = []
-    
-    # def add_value(self, value):
-    #     if not isinstance(value, ast.Lambda):
-    #         raise Exception(Cyan('Type error! Expect ast.Lambda but receive ' + str(type(value))))
-    #     self.value.append(value)
 
     def add_arg(self, arg):
         if not isinstance(arg, Param):

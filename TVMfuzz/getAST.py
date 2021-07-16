@@ -1,26 +1,8 @@
-'''
-Copyright 2021 The Authors: Qingchao Shen, Haoyang Ma, Junjie Chen, Yongqiang Tian, Shing-Chi Cheung, Xiang Che
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-'''
-
-
 import ast
 import os
 from TVMfuzz.colors import *
 from TVMfuzz.analyzeSyntax import dealWithStatement, dealWithImport
 from TVMfuzz.ASTutils import *
-# import astunparse
 import random 
 from TVMfuzz.elements import *
 import copy
@@ -54,13 +36,11 @@ class NodeTransformer(ast.NodeTransformer):
             functionDefNames.add(FunctionDef.name)
 
         elif not random.randint(0, 14):
-        # elif random.randint(1, 1):
 
             funcID = int(os.getenv('funcID'))
             funcID += 1
             os.environ['isFunc'] = 'True'
             os.environ['funcID'] = str(funcID)
-            # funcDef.add(FunctionDef.name)
             function_body = FunctionDef.body
             for function_element in function_body:
 
@@ -85,7 +65,6 @@ class NodeTransformer(ast.NodeTransformer):
             param2 = None
             if hasattr(item, 'context_expr'):
                 param1 = recognizeMultiAssignment(item.context_expr, indent=indent)
-                # param1's Type is function-like class
                 if isinstance(param1, pFunc):
                     randomname = varNameGenerator(varnamesRead)
                     pfunc = pFunc(funcName=param1.funcName,
@@ -128,7 +107,6 @@ class NodeTransformer(ast.NodeTransformer):
                 AssignNode(ele, param, indent+1, func=func)
 
     def visit_With(self, With, surround=None, indent=0, func=None):
-        # pass
         param = self.visit_WithItems(With, surround=surround, indent=indent)
         dealWithStatement(param=param)
         self.visit_WithBody(With, param, indent, func)
@@ -160,8 +138,6 @@ class NodeTransformer(ast.NodeTransformer):
     
     def visit_Expr(self, Expr, surround=None, indent=0):
         if isinstance(Expr.value, ast.Call):
-            # funcName = self.nest(Expr.value.func)
-            
             param = recognizeMultiAssignment(value=Expr.value, 
                                              indent=indent,
                                              surround=surround)

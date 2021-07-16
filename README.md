@@ -1,4 +1,6 @@
-# TVMfuzz [![DOI](https://zenodo.org/badge/369744575.svg)](https://zenodo.org/badge/latestdoi/369744575)
+This repository has been archived using Zenodo. Anyone can publicly access the artifact via the link [![DOI](https://zenodo.org/badge/342103158.svg)](https://zenodo.org/badge/latestdoi/342103158).
+
+# TVMfuzz 
 
 ## introduction
 
@@ -17,11 +19,6 @@ After running *run.py*, a new folder named *byproduct* will be created and it co
 + log.txt: records the interrelationship among all involved statements of interest
 + program.py: the generated test program
 
-## dependency and version
-
-TVMfuzz requires Python package ast, astunparse and numpy, also need to install tvm according the instruction [here](https://tvm.apache.org/docs/install/from_source.html) before executing.
-
-By the way, Python version 3.9.1 is required for successful execution.
 
 
 ## Reproducibility
@@ -29,35 +26,9 @@ By the way, Python version 3.9.1 is required for successful execution.
 ### TVMFuzz
 
 To release reviews from laborious tasks of building experimental environments, we have created a docker image and pushed it to docker hub. The version of TVM installed in our image is 0.7, consistent with the one in our experiments.
-You can download the image and reproduce our experiments about TVMfuzz in the following steps:
+You can download the image and reproduce our experiments about TVMfuzz following the **[INSTALL.pdf](https://github.com/anonymousWork000/DLCstudy/blob/master/INSTALL.pdf)** file.
 
-1)	Input the following commands:
 
-        docker pull mhypony/dlcstudy_tvmfuzz:latest
-
-        docker run -it mhypony/dlcstudy_tvmfuzz:latest /bin/bash
-
-2)	Now you are in our docker container, to eliminate unexpected situations that may corrupt our experiment, you should input the following two commands:
-
-        source /etc/profile
-
-        source activate
-  
-3)	Now go to the folder called **DLCstudy** and run **run.py**.
-
-5)	Finally, you can check the generated program (**program.py**) in the folder named **byproduct**. 
-
-6)	You can also download the latest version of TVM and compare the difference between executions under TVM 0.7 and TVM latest. If you are lucky, you may find some bugs that we have never found.
-
-### Plotting
-In order to better reproduce the figures in the paper, we provide a drawing scrip (**drawing_script.R**), which can generate all the graphs in our paper. To see the generated graph intuitively, we recommend that you use RStudio to run this script. 
-First You just need to download the **plotting** folder in this repository to your computer.
-
-Secondly, you need to run the script(`drawing_script.R`) with RStudio, and then all the figures in our paper will be generated one by one.
-
-Notes: 
-1. The dataset file(**dataset.xlsx**) should be placed in the same directory as the drawing_script.R file.
-2. If the running crash with a message "\`path\` does not exist: ‘dataset.xlsx’", you need set the **working directory** to source file location.
 
 # Dataset
 
@@ -101,3 +72,13 @@ For each worksheet, the following related information are shown:
 - the top root cause of this bug
 - sub_causes: short for subcategories of  root causes
 - the related framework of the Model Loading bugs
+
+## Plotting
+In order to better reproduce the figures in the paper, we provide a drawing scrip (**drawing_script.R**), which can generate all the graphs in our paper. To see the generated graph intuitively, we recommend that you use RStudio to run this script. 
+First You just need to download the **dataset** folder in this repository to your computer.
+
+Secondly, you need to run the script(`drawing_script.R`) with RStudio, and then all the figures in our paper will be generated one by one.
+
+Notes: 
+1. The dataset file(**dataset.xlsx**) should be placed in the same directory as the **drawing_script.R** file.
+2. If the running crash with a message "\`path\` does not exist: ‘dataset.xlsx’", you need set the **working directory** to source file location.

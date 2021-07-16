@@ -1,37 +1,13 @@
-'''
-Copyright 2021 The Authors: Qingchao Shen, Haoyang Ma, Junjie Chen, Yongqiang Tian, Shing-Chi Cheung, Xiang Che
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-'''
-
-
 import random
 from TVMfuzz.colors import *
 from TVMfuzz.syntax import *
 from TVMfuzz.utils import varNameGenerator
 from TVMfuzz.elements import *
 import astunparse
-# import tvm
 
 random.seed()
 
 def integerGenerator(a, b):
-    # decision = random.choices(['int', 'float'])
-    # if decision == 'int':
-    #     return str(random.randint(0, 100))
-    # else:
-    #     multiple = random.randint(1, 100)
-    #     return str(multiple*random.random())
     return random.randint(a, b)
 
 def floatGenerator(str_):
@@ -77,7 +53,6 @@ def tupleGenerator():
 def constGenerator():
     space = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
                     'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    # space += ([i.upper() for i in space])
     name = ''.join(random.choices(space, k=1))
     space += ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
     name += ''.join(random.choices(space, k=random.randint(0, 4)))
@@ -95,18 +70,12 @@ def decryptConst(param, string, PARAM):
             output == 'int32' or output == 'int64' or \
                 output == 'uint16' or output == 'uint32' or \
                     output == 'uint64':
-
-        # if isinstance(PARAM, pFunc) and 'tvm.tir.IntImm' in PARAM.funcName:
-        #     output = 'int' + random.choices(['16', '32', '64'], k=1)[0]
-        # else:
         output = random.choices(['float', 'int', 'uint'], k=1)[0] + \
             random.choices(['16', '32', '64'], k=1)[0]
 
     elif 'llvm' == output or 'cuda' == output:
-        # output = random.choices(['llvm', 'cuda'], k=1)[0]
         output = 'llvm'
     elif 'cpu' == output or 'gpu' == output:
-        # output = random.choices(['cpu', 'gpu'], k=1)[0]
         output = 'cpu'
     string += param.pref + '\'\'\'' + output + '\'\'\'' + param.restname + ','
     
@@ -132,10 +101,7 @@ def decryptListTuple(param, string, PARAM, f, noBracket, rv):
             string = decrypt(c, PARAM, f, string=string, rv=rv) + ','
         
     else:
-        # if param.Type == 'list':
         string += listGenerator()
-        # else:
-        #     string += tupleGenerator() + ','
     string += end + param.restname + ','
     return string
 
@@ -253,8 +219,6 @@ def decryptVariable_if_varTofunc(PARAM, pvar, f, string, rv):
     leftname = None
     pfunc_ = None
     if isinstance(PARAM, pFunc):
-        # May contain bugs if the only parameter of one function
-        # is itself. But this scenario seems to be impossible
         while True:
             randit_ = random.randint(0, len(pvar.varTofunc)-1)
             pfunc_ = list(pvar.varTofunc)[randit_]
@@ -306,8 +270,6 @@ def decryptVariable(pvar, string, PARAM, f, rv):
         return decryptVariable_if_varTocls(pvar, f, string, PARAM, rv)
 
     else:
-        # print(Cyan('Seems that cannot decrypt the variable with name: ' + \
-        #     pvar.name))
         
         if pvar.name in helperFuncDef:
             f.write(astunparse.unparse(helperFuncDef[pvar.name]))
@@ -383,7 +345,6 @@ def decryptLambda(param, string, PARAM, f, rv):
         string = decrypt(param.body[0], PARAM, f, string=string, rv=rv)
     else:
         string += generateFunc(param.body[0], f, False, rv=rv, lamb=True)
-    # print(Blue(string))
     if string[-1] == '\n': string = string[:-1]
     return string + ','
 
@@ -432,9 +393,6 @@ def decrypt(param, PARAM, f, noBracket=False, rv=False, string=''):
 
     elif param.Type == 'lambda':
         string = decryptLambda(param, string, PARAM, f, rv)
-    #     valuelist = param.value
-    #     value = valuelist[random.randint(0, len(valuelist)-1)]
-    #     string += astunparse.unparse(value)
 
     return string[:-1]
 
@@ -494,7 +452,6 @@ def generateFuncLeftPart_varTofunc(varobject, string, f, pfunc, rv):
 
     funcList = list(varobject.varTofunc)
     func = funcList[random.randint(0, len(funcList)-1)]
-    # raise Exception('hhhh')
     if func not in lazy and func not in funcPool:
         if func.surround == pfunc.surround and rv:
             string = generateFunc(func, f, False, True) + string
@@ -581,14 +538,9 @@ def generateFuncNamePart(pfunc, string):
     return string
 
 def generateFuncParamPart(pfunc, string, f, rv):
-
-    # addstring = False
     for param in pfunc.params:
-        # if not param.optional or random.randint(0, 1):
-        
         string = decrypt(param, pfunc, f, string=string, rv=rv) + ','
-            # addstring = True
-    # if addstring:
+
     if pfunc.params:
         string = string[:-1]
     string += ')'
@@ -652,12 +604,8 @@ def generateChildren(breed, param, f):
                 
                 if param not in child.children or \
                     not random.randint(0, 10):
-
                     if isinstance(child, pFunc):
-                        
                         if child not in funcPool or not random.randint(0, 9):
-                            # fillInFuncNumber(child)
-
                             generateFunc(child, f, breed)
                     
                     elif isinstance(child, pWith):
@@ -750,10 +698,6 @@ def generateFunc(pfunc, f, breed, rv=False, lamb=False):
     string, restrictedVarNew = generateFuncRightPart(pfunc, string, breed, f, rv)
     string = deleteFuncObsoletePart(string)
     string += '\n'
-    # if tvm.__version__ == '0.8.dev0':
-    #     if 'topi.util' in string or 'topi.nn.util' in string or \
-    #         'nn.util' in string:
-    #         string = string.replace('util', 'utils')
     if rv:
         fillIn_funcPool(pfunc, restrictedVarNew, leftname) 
         for adjunct in pfunc.adjuncts:
@@ -880,12 +824,9 @@ def generateWith(pwith, f, breed, rv=False):
     '''generate parents'''
     
     for parent in pwith.parents:
-        # fillInFuncNumber(parent)
         if parent not in lazy and parent not in funcPool:
             generateFunc(parent, f, False)
 
-    # for ele in pwith.body:
-    #     generateParents(ele, f)
     '''end'''
 
     withPool.add(pwith)
@@ -895,11 +836,6 @@ def generateWith(pwith, f, breed, rv=False):
     string += generateWithBody(pwith, f, breed)
 
     if rv: return string
-
-    # if recordedFunc:
-    #     print(Green('yes'))
-    #     for func in recordedFunc:
-    #         f.write(astunparse.unparse(func))
 
     f.write(string + '\n')
     generateRestAdjuncts(f)
@@ -969,7 +905,6 @@ def generateCls_varTocls(varobject, f, master, param, rv):
 
 def generateCls(param, f, master, rv=False):
         
-    # string = generateIndent(param.indent)
     varname = ''
     varobject = param.varobjects[0]
     
@@ -984,7 +919,6 @@ def generateCls(param, f, master, rv=False):
     varname += varobject.restname
     fillIn_clsPool(param, varname)
     string = varname + '='
-    ## above is ok
     string = decrypt(param, param, f, string=string, rv=rv)
     if rv: return string + '\n'
     f.write(string + '\n')
@@ -994,23 +928,11 @@ def generate():
     f = open('byproduct/program.py', 'w')
 
     for im in importSet:
-        # if tvm.__version__ == '0.8.dev0':
-            # if 'tvm.topi.util' in im or \
-            #     'tvm.topi.nn.util' in im or \
-            #         'from tvm.topi import util' in im:
-            #     im = im.replace('util', 'utils')
         f.write(im + '\n')
     f.write('\n')
 
-    # with open('template.py', 'r') as fr:
-    #     lines = fr.readlines()
-    #     for line in lines:
-    #         f.write(line)
-    # f.write('\n')
-
     print(Magenta('len(ingredient) = ' + str(len(ingredient))))
     id = random.randint(0, len(ingredient)-1)
-    # id = 2
     print(Yellow('id = ' + str(id)))
     if isinstance(ingredient[id], pFunc):
         print(Yellow('ingredient = ' + str(ingredient[id].funcName)))
