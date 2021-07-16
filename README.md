@@ -1,4 +1,4 @@
-This repository has been archived using Zenodo. Anyone can publicly access the artifact via the link [![DOI](https://zenodo.org/badge/342103158.svg)](https://zenodo.org/badge/latestdoi/342103158).
+This repository has been archived using Zenodo. Anyone can publicly access the artifact via the link [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5109043.svg)](https://doi.org/10.5281/zenodo.5109043).
 
 # TVMfuzz 
 
