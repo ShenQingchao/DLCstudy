@@ -82,3 +82,24 @@ Secondly, you need to run the script(`drawing_script.R`) with RStudio, and then 
 Notes: 
 1. The dataset file(**dataset.xlsx**) should be placed in the same directory as the **drawing_script.R** file.
 2. If the running crash with a message "\`path\` does not exist: ‘dataset.xlsx’", you need set the **working directory** to source file location.
+
+## Citation
+Please cite our paper if this work is helpful to you.
+```
+@inproceedings{10.1145/3468264.3468591,
+author = {Shen, Qingchao and Ma, Haoyang and Chen, Junjie and Tian, Yongqiang and Cheung, Shing-Chi and Chen, Xiang},
+title = {A Comprehensive Study of Deep Learning Compiler Bugs},
+year = {2021},
+isbn = {9781450385626},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3468264.3468591},
+doi = {10.1145/3468264.3468591},
+booktitle = {Proceedings of the 29th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering},
+pages = {968–980},
+numpages = {13},
+keywords = {Deep Learning, Compiler Testing, Empirical Study, Deep Learning Compiler Bug},
+location = {Athens, Greece},
+series = {ESEC/FSE 2021}
+}
+```
