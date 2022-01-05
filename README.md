@@ -26,7 +26,7 @@ After running *run.py*, a new folder named *byproduct* will be created and it co
 ### TVMFuzz
 
 To release reviews from laborious tasks of building experimental environments, we have created a docker image and pushed it to docker hub. The version of TVM installed in our image is 0.7, consistent with the one in our experiments.
-You can download the image and reproduce our experiments about TVMfuzz following the **[INSTALL.pdf](https://github.com/anonymousWork000/DLCstudy/blob/master/INSTALL.pdf)** file.
+You can download the image and reproduce our experiments about TVMfuzz following the **[INSTALL.pdf](https://github.com/ShenQingchao/DLCstudy/blob/master/INSTALL.pdf)** file.
 
 
 
