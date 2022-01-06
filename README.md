@@ -1,5 +1,5 @@
 
-# 1. TVMfuzz [![DOI]
+# 1. TVMfuzz
 
 
 ## introduction
