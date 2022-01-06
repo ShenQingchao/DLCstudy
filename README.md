@@ -1,5 +1,5 @@
 
-# TVMfuzz [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5109043.svg)](https://doi.org/10.5281/zenodo.5109043)
+# 1. TVMfuzz [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5109043.svg)](https://doi.org/10.5281/zenodo.5109043)
 
 
 ## introduction
@@ -30,7 +30,7 @@ You can download the image and reproduce our experiments about TVMfuzz following
 
 
 
-# Dataset
+# 2. Dataset
 
 ## introduction
 
