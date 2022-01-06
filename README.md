@@ -1,5 +1,5 @@
 
-# 1. TVMfuzz [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5109043.svg)](https://doi.org/10.5281/zenodo.5109043)
+# 1. TVMfuzz [![DOI]
 
 
 ## introduction
