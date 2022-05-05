@@ -1,5 +1,3 @@
-This repo has been archived and is no longer maintained. Any development will be performed in [here](https://github.com/T3stLove/DLCstudy)
-
 # 1. TVMfuzz
 
 
